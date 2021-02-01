@@ -3,6 +3,8 @@ import { IBookState } from "../store/reducers/BookReducer";
 import axios from "axios";
 
 export const ShowBooks: React.FC<IBookState> = (props: IBookState) => {
+  console.log(props);
+
   return (
     <tbody>
       {props.books.map((book, index) => (

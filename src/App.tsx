@@ -6,12 +6,14 @@ import ShowBookContainer from "./containers/ShowBookContainer";
 import { store } from "./store/Store";
 // import TableContentsContainer from "./containers/TableContentsContainer";
 // import DataEntryContainer from "./containers/DataEntryContainer";
-
+console.log(store);
 function App() {
   return (
-    <div className="App">
-      <ShowBookContainer />
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <ShowBookContainer />
+      </div>
+    </Provider>
   );
 }
 

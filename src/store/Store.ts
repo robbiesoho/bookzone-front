@@ -5,7 +5,10 @@ import {
   createStore,
   Reducer,
   Store,
+  compose,
+  applyMiddleware,
 } from "redux";
+import thunk from "redux-thunk";
 import { IBookState, bookReducer } from "./reducers/BookReducer";
 
 export interface IRootState {
@@ -19,4 +22,13 @@ const combinedReducer: Reducer<
   BooksState: bookReducer,
 });
 
-export const store: Store<IRootState> = createStore(combinedReducer);
+const middleware = [thunk];
+
+export const store: Store<IRootState> = createStore(
+  combinedReducer,
+  // compose(
+  //   applyMiddleware(...middleware)
+  //   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  // )
+  applyMiddleware(thunk)
+);

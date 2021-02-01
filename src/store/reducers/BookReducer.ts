@@ -1,3 +1,5 @@
+import { showBooks } from "../../actions/book-action";
+
 export interface IBook {
   published: Date;
   title: string;
@@ -18,6 +20,10 @@ export const bookReducer = (
 ) => {
   switch (action.type) {
     case "ADD_BOOK":
+      return {
+        books: [...state.books, action.payload],
+      };
+    case "SHOW_BOOKS":
       return {
         books: [...state.books, action.payload],
       };
