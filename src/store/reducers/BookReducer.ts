@@ -14,7 +14,7 @@ const intialState: IBookState = {
 
 export const bookReducer = (
   state: IBookState = intialState,
-  action = { type: string, payload: IBook }
+  action: { type: string; payload: IBook }
 ) => {
   switch (action.type) {
     case "ADD_BOOK":
