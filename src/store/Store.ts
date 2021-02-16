@@ -15,13 +15,6 @@ import { IBookState, IRootState } from "../Models";
 const composeEnhancers =
   (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-// const rootReducer: Reducer<
-//   CombinedState<IRootState>,
-//   AnyAction
-// > = combineReducers<IRootState>({
-//   BooksState: bookReducer,
-// });
-
 const rootReducer: Reducer<
   CombinedState<IRootState>,
   AnyAction

@@ -1,11 +1,8 @@
-import React, { SyntheticEvent, useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { IBookState } from "../Models";
-import { connect, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { showBooks } from "../actions/book-action";
-// import { connector } from "../containers/ShowBookContainer";
-
-import axios from "axios";
-import { store } from "../store/Store";
+import { Table } from "react-bootstrap";
 
 export const ShowBooks: React.FC<IBookState> = (props: IBookState) => {
   const dispatch = useDispatch();
@@ -14,14 +11,30 @@ export const ShowBooks: React.FC<IBookState> = (props: IBookState) => {
     dispatch(showBooks());
   }, []);
 
-  // console.log("PROPS: ");
-  // console.log(props.books);
-  // console.log("PROPS[0]: ");
-  // console.log(props.books[0]);
-
+  console.log(props);
   return (
     <div>
       <h1>Bookzone</h1>
+      <h3>Your Books</h3>
+      {/* <Table striped bordered hover variant="dark">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author Id</th>
+            <th>Date Published</th>
+          </tr>
+        </thead>
+        <tbody>
+          {props.books &&
+            props.books.map((b, i) => {
+              <tr key={i}>
+                <td>{b.title}</td>
+                <td>{b.authorId}</td>
+                <td>{b.published}</td>
+              </tr>;
+            })}
+        </tbody>
+      </Table> */}
       <ul>
         {props.books &&
           props.books.map((b, i) => {
@@ -32,14 +45,6 @@ export const ShowBooks: React.FC<IBookState> = (props: IBookState) => {
   );
 };
 
-// const mapStateToProps = (state: IState) => {
-//   return {
-//     email: state.userState.email,
-//   };
-// };
-
-// export default connect(mapStateToProps)(HomePage);
-
 /**
  * NOTE:
  * You won't always have a type like IRecordsState readily available for passing in as your prop type.
@@ -48,22 +53,3 @@ export const ShowBooks: React.FC<IBookState> = (props: IBookState) => {
  *
  * Since there wasn't a mapDispatchToProps passed in, the type is the same as the object returned from mapStateToProps; a type IRecordsState.
  */
-
-//  <table>
-//    <thead>
-//      <tr>
-//        <th>title</th>
-//        <th>author</th>
-//        <th>date</th>
-//      </tr>
-//    </thead>
-//    <tbody>
-//      {props.books.map((book, index) => (
-//        <tr key={index}>
-//          <td>{book.authorId}</td>
-//          {/* <td>{book.authorId}</td>
-//               <td>{book.published}</td> */}
-//        </tr>
-//      ))}
-//    </tbody>
-//  </table>;

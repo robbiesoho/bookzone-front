@@ -10,9 +10,3 @@ import Axios from "axios";
 export const axiosInstance = Axios.create({
   baseURL: "http://localhost:9000/book/all",
 });
-
-// export const axiosInstance = async () => {
-//   return Axios.create({
-//     baseURL: "http://localhost:9000/book/all",
-//   });
-// };
