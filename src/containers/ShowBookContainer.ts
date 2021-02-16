@@ -1,12 +1,22 @@
-import { connect } from "react-redux";
+import { Dispatch } from "react";
+import { connect, ConnectedProps } from "react-redux";
+import { AnyAction } from "redux";
+import { showBooks } from "../actions/book-action";
 import { ShowBooks } from "../components/ShowBooks";
-import { IBookState } from "../store/reducers/BookReducer";
-import { IRootState } from "../store/Store";
+import { IBookState, IRootState } from "../Models";
 
-const mapStateToProps: (s: IRootState) => IBookState = (state: IRootState) => {
+const mapStateToProps = (state: IRootState) => {
   return {
-    books: state.BooksState.books,
+    books: state.bookState.books,
   };
 };
 
-export default connect(mapStateToProps)(ShowBooks);
+const mapDispatchToProps = {
+  showBooks: showBooks,
+};
+
+// export default connect(mapStateToProps, mapDispatchToProps);
+// export const connector = connect(mapStateToProps, mapDispatchToProps);
+// export type ContainerProps = ConnectedProps<typeof connector>;
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShowBooks);

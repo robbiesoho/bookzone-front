@@ -6,7 +6,13 @@ import Axios from "axios";
  * function and when you call the instance's methods,
  * these properties can be overridden.
  */
+
 export const axiosInstance = Axios.create({
-  // baseURL: "https://pokeapi.co/api/v2/pokemon/",
   baseURL: "http://localhost:9000/book/all",
 });
+
+// export const axiosInstance = async () => {
+//   return Axios.create({
+//     baseURL: "http://localhost:9000/book/all",
+//   });
+// };

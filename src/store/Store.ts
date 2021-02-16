@@ -9,26 +9,27 @@ import {
   applyMiddleware,
 } from "redux";
 import thunk from "redux-thunk";
-import { IBookState, bookReducer } from "./reducers/BookReducer";
+import { bookReducer } from "./reducers/BookReducer";
+import { IBookState, IRootState } from "../Models";
 
-export interface IRootState {
-  BooksState: IBookState;
-}
+const composeEnhancers =
+  (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const combinedReducer: Reducer<
+// const rootReducer: Reducer<
+//   CombinedState<IRootState>,
+//   AnyAction
+// > = combineReducers<IRootState>({
+//   BooksState: bookReducer,
+// });
+
+const rootReducer: Reducer<
   CombinedState<IRootState>,
   AnyAction
 > = combineReducers<IRootState>({
-  BooksState: bookReducer,
+  bookState: bookReducer,
 });
 
-const middleware = [thunk];
-
 export const store: Store<IRootState> = createStore(
-  combinedReducer,
-  // compose(
-  //   applyMiddleware(...middleware)
-  //   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  // )
-  applyMiddleware(thunk)
+  rootReducer,
+  composeEnhancers(applyMiddleware(thunk))
 );

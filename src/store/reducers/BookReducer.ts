@@ -1,14 +1,6 @@
-import { showBooks } from "../../actions/book-action";
-
-export interface IBook {
-  published: Date;
-  title: string;
-  authorId: number;
-}
-
-export interface IBookState {
-  books: IBook[];
-}
+import { SHOW_BOOKS, ADD_BOOK } from "../../actions/types";
+import { IBookState } from "../../Models";
+import { IBook } from "../../Interfaces";
 
 const intialState: IBookState = {
   books: [] as IBook[],
@@ -19,14 +11,15 @@ export const bookReducer = (
   action: { type: string; payload: IBook }
 ) => {
   switch (action.type) {
-    case "ADD_BOOK":
+    case SHOW_BOOKS:
       return {
         books: [...state.books, action.payload],
       };
-    case "SHOW_BOOKS":
+    case ADD_BOOK:
       return {
         books: [...state.books, action.payload],
       };
+
     default:
       return state;
   }
